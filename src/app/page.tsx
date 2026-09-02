@@ -6,7 +6,7 @@ import SectionHeader from '@/components/SectionHeader';
 import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCard from '@/components/ProjectCard';
 import ClosingCta from '@/components/ClosingCta';
-import HeroPyramid from '@/components/HeroPyramid';
+import HeroIconT from '@/components/HeroIconT';
 import {
   HOME_HERO,
   FEATURED_PROJECTS,
@@ -27,9 +27,9 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
 
   return (
     <div className={`space-y-24 md:space-y-32 ${isDark ? 'figma-grid' : 'figma-grid-light'}`}>
-      {/* HERO SECTION — 100% MATCH TO FIGMA SCREENSHOT 1 */}
-      <section className="relative min-h-[85vh] flex flex-col justify-between pt-12 pb-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-auto">
+      {/* HERO SECTION — 100% MATCH TO FIGMA SCREENSHOT 1 WITH 3D 't' ICON */}
+      <section className="relative min-h-[85vh] flex flex-col justify-between pt-8 pb-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto">
           {/* Left Column: Giant Bold Headline */}
           <div className="lg:col-span-7">
             <ScrollReveal direction="up" delay={0.1}>
@@ -42,40 +42,16 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
 
             <ScrollReveal direction="up" delay={0.2}>
               <p className={`text-lg md:text-xl max-w-2xl leading-relaxed mb-10 font-sans ${
-                isDark ? 'text-[#A1A1AA]' : 'text-gray-600'
+                isDark ? 'text-[#A1A1AA]' : 'text-gray-700'
               }`}>
                 {HOME_HERO.subDescription}
               </p>
             </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.3}>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-xs font-mono uppercase tracking-widest bg-[#3DDC84] text-[#070B09] hover:bg-[#32b56c] transition-all transform hover:scale-[1.02] font-bold"
-                >
-                  <span>Start a Project</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-
-                <Link
-                  href="/work"
-                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-full text-xs font-mono uppercase tracking-widest border transition-all ${
-                    isDark
-                      ? 'bg-[#0D1510] text-white border-[#1A281E] hover:border-[#3DDC84]'
-                      : 'bg-gray-100 text-gray-900 border-gray-300'
-                  }`}
-                >
-                  <span>Explore Work</span>
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </ScrollReveal>
           </div>
 
-          {/* Right Column: 3D Triforce Pyramid Structure (Figma Screenshot 1) */}
+          {/* Right Column: 3D Interactive 't' Icon (Rotating 3D Teglax Green Letter 't') */}
           <div className="lg:col-span-5 flex items-center justify-center">
-            <HeroPyramid isDark={isDark} />
+            <HeroIconT isDark={isDark} />
           </div>
         </div>
 

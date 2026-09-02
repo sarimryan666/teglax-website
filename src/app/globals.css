@@ -14,6 +14,19 @@
     --text-muted: #71717A;
   }
 
+  .light {
+    --bg-primary: #FFFFFF;
+    --bg-card: #F8FAFC;
+    --bg-card-hover: #F1F5F9;
+    --border-color: #E2E8F0;
+    --border-hover: #CBD5E1;
+    --accent-green: #22C55E;
+    --accent-glow: rgba(34, 197, 94, 0.15);
+    --text-headline: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+  }
+
   body {
     background-color: var(--bg-primary);
     color: var(--text-body);
@@ -22,6 +35,44 @@
     selection-background-color: var(--accent-green);
     selection-color: #070B09;
   }
+}
+
+/* Light Mode Overrides for High Contrast */
+.light body {
+  background-color: #FFFFFF;
+  color: #1E293B;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: #0F172A !important;
+}
+
+.light p {
+  color: #334155 !important;
+}
+
+.light .bg-\[\#0D1510\],
+.light .bg-\[\#101713\],
+.light .bg-\[\#070B09\] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+.light .border-\[\#1A281E\],
+.light .border-\[\#1C2921\] {
+  border-color: #E2E8F0 !important;
+}
+
+.light .text-white {
+  color: #0F172A !important;
+}
+
+.light .text-\[\#A1A1AA\] {
+  color: #475569 !important;
+}
+
+.light .text-\[\#71717A\] {
+  color: #64748B !important;
 }
 
 /* Figma Background Grid System */
@@ -35,8 +86,8 @@
 .figma-grid-light {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(229, 231, 235, 0.8) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(229, 231, 235, 0.8) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
 }
 
 ::selection {
