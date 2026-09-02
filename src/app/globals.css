@@ -3,91 +3,45 @@
 @layer base {
   :root {
     --bg-primary: #070B09;
-    --bg-card: #0D1510;
-    --bg-card-hover: #131E17;
+    --bg-secondary: #0D1510;
     --border-color: #1A281E;
-    --border-hover: #2B4232;
     --accent-green: #3DDC84;
-    --accent-glow: rgba(61, 220, 132, 0.15);
     --text-headline: #FFFFFF;
     --text-body: #A1A1AA;
     --text-muted: #71717A;
   }
 
   .light {
-    --bg-primary: #FFFFFF;
-    --bg-card: #F8FAFC;
-    --bg-card-hover: #F1F5F9;
+    --bg-primary: #F7F7F8;
+    --bg-secondary: #FFFFFF;
     --border-color: #E2E8F0;
-    --border-hover: #CBD5E1;
-    --accent-green: #22C55E;
-    --accent-glow: rgba(34, 197, 94, 0.15);
-    --text-headline: #0F172A;
-    --text-body: #334155;
+    --accent-green: #3DDC84;
+    --text-headline: #000000;
+    --text-body: #475569;
     --text-muted: #64748B;
   }
 
   body {
     background-color: var(--bg-primary);
     color: var(--text-body);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     overflow-x: hidden;
-    selection-background-color: var(--accent-green);
-    selection-color: #070B09;
   }
 }
 
-/* Light Mode Overrides for High Contrast */
-.light body {
-  background-color: #FFFFFF;
-  color: #1E293B;
-}
-
-.light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
-  color: #0F172A !important;
-}
-
-.light p {
-  color: #334155 !important;
-}
-
-.light .bg-\[\#0D1510\],
-.light .bg-\[\#101713\],
-.light .bg-\[\#070B09\] {
-  background-color: #F8FAFC !important;
-  border-color: #E2E8F0 !important;
-}
-
-.light .border-\[\#1A281E\],
-.light .border-\[\#1C2921\] {
-  border-color: #E2E8F0 !important;
-}
-
-.light .text-white {
-  color: #0F172A !important;
-}
-
-.light .text-\[\#A1A1AA\] {
-  color: #475569 !important;
-}
-
-.light .text-\[\#71717A\] {
-  color: #64748B !important;
-}
-
-/* Figma Background Grid System */
+/* Faint background grid lines matching Video Frame 1 & 6 */
 .figma-grid {
-  background-size: 48px 48px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(28, 41, 33, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 41, 33, 0.25) 1px, transparent 1px);
+    linear-gradient(to right, rgba(61, 220, 132, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(61, 220, 132, 0.06) 1px, transparent 1px);
 }
 
 .figma-grid-light {
-  background-size: 48px 48px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
 
 ::selection {
@@ -95,35 +49,16 @@
   color: #070B09;
 }
 
-/* Scrollbar customization */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #070B09;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A281E;
-  border-radius: 4px;
+  background: var(--border-color);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3DDC84;
-}
-
-/* Glowing Radial Background Utility */
-.radial-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(61, 220, 132, 0.18) 0%, rgba(7, 11, 9, 0) 70%);
-}
-
-.radial-glow-hero {
-  background: radial-gradient(circle at 75% 50%, rgba(61, 220, 132, 0.14) 0%, rgba(7, 11, 9, 0) 65%);
-}
-
-.card-glow-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-glow-hover:hover {
-  border-color: rgba(61, 220, 132, 0.4);
-  box-shadow: 0 0 25px rgba(61, 220, 132, 0.08);
 }
