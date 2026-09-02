@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import ThemeWrapper from '@/components/ThemeWrapper';
 import { SITE_META } from '@/data/content';
 
 export const viewport: Viewport = {
@@ -34,12 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="bg-[#0A0F0C] text-[#A1A1AA] antialiased selection:bg-[#3DDC84] selection:text-[#0A0F0C] min-h-screen flex flex-col font-sans">
-        <Navbar />
-        <main className="flex-grow pt-24">
+      <body className="antialiased selection:bg-[#3DDC84] selection:text-[#0A0F0C] min-h-screen">
+        <ThemeWrapper>
           {children}
-        </main>
-        <Footer />
+        </ThemeWrapper>
       </body>
     </html>
   );

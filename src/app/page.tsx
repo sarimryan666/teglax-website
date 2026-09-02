@@ -1,9 +1,12 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCard from '@/components/ProjectCard';
 import ClosingCta from '@/components/ClosingCta';
+import HeroCanvas from '@/components/HeroCanvas';
 import {
   HOME_HERO,
   FEATURED_PROJECTS,
@@ -19,64 +22,80 @@ import {
   Sparkles,
   CheckCircle2,
   Star,
-  Award,
-  Layers,
-  Users,
-  ChevronRight,
-  TrendingUp
+  ChevronRight
 } from 'lucide-react';
 
-export default function HomePage() {
+export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
+  const isDark = theme === 'dark';
+
   return (
     <div className="space-y-24 md:space-y-32">
-      {/* HERO SECTION */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+      {/* HERO SECTION WITH 3D PRISM GEOMETRY */}
+      <section className="relative pt-8 pb-20 md:pt-16 md:pb-28 overflow-hidden">
         {/* Radial Hero Background Glow */}
-        <div className="absolute inset-0 pointer-events-none radial-glow-hero opacity-90" />
+        {isDark && <div className="absolute inset-0 pointer-events-none radial-glow-hero opacity-90" />}
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <ScrollReveal direction="up" delay={0.1}>
-            {/* Meta Line */}
-            <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#1C2921] bg-[#101713] text-xs font-mono text-[#A1A1AA] mb-8">
-              <span className="w-2 h-2 rounded-full bg-[#3DDC84] animate-pulse"></span>
-              <span>{HOME_HERO.metaLine}</span>
-            </div>
-          </ScrollReveal>
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Hero Content */}
+          <div className="lg:col-span-7">
+            <ScrollReveal direction="up" delay={0.1}>
+              {/* Meta Line */}
+              <div className={`inline-flex items-center gap-3 px-4 py-1.5 rounded-full border text-xs font-mono mb-8 ${
+                isDark ? 'border-[#1C2921] bg-[#101713] text-[#A1A1AA]' : 'border-gray-200 bg-gray-100 text-gray-700'
+              }`}>
+                <span className="w-2 h-2 rounded-full bg-[#3DDC84] animate-pulse"></span>
+                <span>{HOME_HERO.metaLine}</span>
+              </div>
+            </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.2}>
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white max-w-5xl leading-[1.05] font-sans mb-8">
-              We design, build and market digital products that move <span className="text-[#3DDC84]">real numbers.</span>
-            </h1>
-          </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.2}>
+              {/* Main Headline mirroring Riangle structure */}
+              <h1 className={`text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-3xl leading-[1.05] font-sans mb-8 ${
+                isDark ? 'text-white' : 'text-gray-900'
+              }`}>
+                We design brands and build <span className="text-[#3DDC84]">digital & AI-driven</span> experiences.
+              </h1>
+            </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.3}>
-            {/* Sub-description */}
-            <p className="text-lg md:text-2xl text-[#A1A1AA] max-w-3xl leading-relaxed mb-10 font-sans">
-              {HOME_HERO.subDescription}
-            </p>
-          </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.3}>
+              {/* Sub-description */}
+              <p className={`text-lg md:text-xl max-w-2xl leading-relaxed mb-10 font-sans ${
+                isDark ? 'text-[#A1A1AA]' : 'text-gray-600'
+              }`}>
+                {HOME_HERO.subDescription}
+              </p>
+            </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.4}>
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#3DDC84] text-[#0A0F0C] hover:bg-[#32b56c] transition-all transform hover:scale-[1.02] shadow-lg shadow-[#3DDC84]/20"
-              >
-                <span>{HOME_HERO.ctaPrimary}</span>
-                <ArrowUpRight className="w-5 h-5" />
-              </Link>
+            <ScrollReveal direction="up" delay={0.4}>
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#3DDC84] text-[#0A0F0C] hover:bg-[#32b56c] transition-all transform hover:scale-[1.02] shadow-lg shadow-[#3DDC84]/20"
+                >
+                  <span>{HOME_HERO.ctaPrimary}</span>
+                  <ArrowUpRight className="w-5 h-5" />
+                </Link>
 
-              <Link
-                href="/work"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider bg-[#101713] text-white border border-[#1C2921] hover:border-[#3DDC84] hover:text-[#3DDC84] transition-all"
-              >
-                <span>{HOME_HERO.ctaSecondary}</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </ScrollReveal>
+                <Link
+                  href="/work"
+                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold uppercase tracking-wider border transition-all ${
+                    isDark
+                      ? 'bg-[#101713] text-white border-[#1C2921] hover:border-[#3DDC84] hover:text-[#3DDC84]'
+                      : 'bg-gray-100 text-gray-900 border-gray-300 hover:border-gray-900'
+                  }`}
+                >
+                  <span>{HOME_HERO.ctaSecondary}</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Column: 3D Interactive Rotating Wireframe Prism (Riangle 3D Clone) */}
+          <div className="lg:col-span-5 flex items-center justify-center">
+            <HeroCanvas isDark={isDark} />
+          </div>
         </div>
       </section>
 
@@ -125,27 +144,35 @@ export default function HomePage() {
           description="We eliminate hand-offs and fragmented teams by bringing design, engineering, and growth under single accountability."
         />
 
-        <div className="divide-y divide-[#1C2921] border-y border-[#1C2921]">
+        <div className={`divide-y border-y ${isDark ? 'divide-[#1C2921] border-[#1C2921]' : 'divide-gray-200 border-gray-200'}`}>
           {CAPABILITIES.map((cap) => (
             <ScrollReveal key={cap.number} direction="left">
               <Link
                 href={`/services/${cap.slug}`}
-                className="group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 px-4 -mx-4 rounded-xl hover:bg-[#101713] transition-all duration-300"
+                className={`group flex flex-col md:flex-row md:items-center justify-between py-6 md:py-8 px-4 -mx-4 rounded-xl transition-all duration-300 ${
+                  isDark ? 'hover:bg-[#101713]' : 'hover:bg-gray-100'
+                }`}
               >
                 <div className="flex items-start md:items-center gap-6 mb-2 md:mb-0">
                   <span className="font-mono text-sm text-[#3DDC84] font-semibold">
                     {cap.number}
                   </span>
-                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#3DDC84] transition-colors">
+                  <h3 className={`text-xl md:text-2xl font-bold transition-colors ${
+                    isDark ? 'text-white group-hover:text-[#3DDC84]' : 'text-gray-900 group-hover:text-[#3DDC84]'
+                  }`}>
                     {cap.title}
                   </h3>
                 </div>
 
                 <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto pl-12 md:pl-0">
-                  <p className="text-sm text-[#A1A1AA] max-w-md font-sans">
+                  <p className={`text-sm max-w-md font-sans ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
                     {cap.desc}
                   </p>
-                  <div className="w-8 h-8 rounded-full border border-[#1C2921] flex items-center justify-center text-[#A1A1AA] group-hover:text-[#0A0F0C] group-hover:bg-[#3DDC84] group-hover:border-[#3DDC84] transition-all">
+                  <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
+                    isDark
+                      ? 'border-[#1C2921] text-[#A1A1AA] group-hover:text-[#0A0F0C] group-hover:bg-[#3DDC84] group-hover:border-[#3DDC84]'
+                      : 'border-gray-300 text-gray-700 group-hover:bg-[#3DDC84] group-hover:text-[#0A0F0C]'
+                  }`}>
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -159,29 +186,33 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Studio Office/Team Panel */}
-          <div className="lg:col-span-7 bg-[#101713] border border-[#1C2921] rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-between">
+          <div className={`lg:col-span-7 border rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-between ${
+            isDark ? 'bg-[#101713] border-[#1C2921]' : 'bg-gray-50 border-gray-200'
+          }`}>
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#3DDC84]/5 rounded-full blur-3xl pointer-events-none"></div>
 
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#1C2921] bg-[#0A0F0C] text-xs font-mono text-[#3DDC84] mb-6">
+              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono text-[#3DDC84] mb-6 ${
+                isDark ? 'border-[#1C2921] bg-[#0A0F0C]' : 'border-gray-200 bg-white'
+              }`}>
                 <span>— STUDIO OPERATIONS</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Operating out of Okara, PK with US client coverage
               </h3>
-              <p className="text-base text-[#A1A1AA] leading-relaxed mb-8">
+              <p className={`text-base leading-relaxed mb-8 ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
                 Teglax was founded in 2023 to bring elite technical execution and business development directly to ambitious founders across North America, Australia, and the Gulf.
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#1C2921]">
+            <div className={`grid grid-cols-2 gap-4 pt-6 border-t ${isDark ? 'border-[#1C2921]' : 'border-gray-200'}`}>
               <div>
                 <span className="block text-xs font-mono text-[#71717A] uppercase">HEADQUARTERS</span>
-                <span className="text-sm font-semibold text-white">Okara, Pakistan</span>
+                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Okara, Pakistan</span>
               </div>
               <div>
                 <span className="block text-xs font-mono text-[#71717A] uppercase">OPERATIONS</span>
-                <span className="text-sm font-semibold text-white">Remote-first US & Gulf</span>
+                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Remote-first US & Gulf</span>
               </div>
             </div>
           </div>
@@ -191,14 +222,16 @@ export default function HomePage() {
             {STATS.map((stat, idx) => (
               <div
                 key={stat.label}
-                className="bg-[#101713] border border-[#1C2921] rounded-2xl p-6 flex flex-col justify-between hover:border-[#3DDC84]/40 transition-colors"
+                className={`border rounded-2xl p-6 flex flex-col justify-between transition-colors ${
+                  isDark ? 'bg-[#101713] border-[#1C2921] hover:border-[#3DDC84]/40' : 'bg-gray-50 border-gray-200 hover:border-[#3DDC84]'
+                }`}
               >
                 <span className="font-mono text-xs text-[#3DDC84]">0{idx + 1}</span>
                 <div className="my-4">
-                  <span className="text-3xl md:text-4xl font-extrabold text-white tracking-tight block">
+                  <span className={`text-3xl md:text-4xl font-extrabold tracking-tight block ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {stat.value}
                   </span>
-                  <span className="text-xs text-[#A1A1AA] font-sans mt-1 block">
+                  <span className={`text-xs font-sans mt-1 block ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
                     {stat.label}
                   </span>
                 </div>
@@ -220,15 +253,17 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {WHY_TEGLAX.map((item) => (
             <ScrollReveal key={item.number} direction="up">
-              <div className="bg-[#101713] border border-[#1C2921] rounded-2xl p-6 h-full flex flex-col justify-between card-glow-hover">
+              <div className={`border rounded-2xl p-6 h-full flex flex-col justify-between card-glow-hover ${
+                isDark ? 'bg-[#101713] border-[#1C2921]' : 'bg-gray-50 border-gray-200'
+              }`}>
                 <div>
                   <span className="font-mono text-xs text-[#3DDC84] block mb-4">
                     {item.number}
                   </span>
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className={`text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#A1A1AA] leading-relaxed">
+                  <p className={`text-sm leading-relaxed ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
                     {item.desc}
                   </p>
                 </div>
@@ -249,10 +284,12 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {PROCESS_STEPS.map((step) => (
-            <div key={step.step} className="bg-[#101713] border border-[#1C2921] rounded-xl p-5">
+            <div key={step.step} className={`border rounded-xl p-5 ${
+              isDark ? 'bg-[#101713] border-[#1C2921]' : 'bg-gray-50 border-gray-200'
+            }`}>
               <span className="font-mono text-xs text-[#3DDC84] block mb-2">{step.step}</span>
-              <h4 className="text-lg font-bold text-white mb-2">{step.title}</h4>
-              <p className="text-xs text-[#A1A1AA] leading-relaxed">{step.desc}</p>
+              <h4 className={`text-lg font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{step.title}</h4>
+              <p className={`text-xs leading-relaxed ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>{step.desc}</p>
             </div>
           ))}
         </div>
@@ -267,13 +304,16 @@ export default function HomePage() {
           description="Real feedback from company owners and founders who hired Teglax for design, development, and marketing."
         />
 
-        {/* Testimonials Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {TESTIMONIALS.map((t) => (
-            <div key={t.id} className="bg-[#101713] border border-[#1C2921] rounded-3xl p-8 flex flex-col justify-between relative card-glow-hover">
+            <div key={t.id} className={`border rounded-3xl p-8 flex flex-col justify-between relative card-glow-hover ${
+              isDark ? 'bg-[#101713] border-[#1C2921]' : 'bg-gray-50 border-gray-200'
+            }`}>
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-[#3DDC84] px-2.5 py-1 rounded bg-[#16201B] border border-[#1C2921]">
+                  <span className={`text-xs font-mono text-[#3DDC84] px-2.5 py-1 rounded border ${
+                    isDark ? 'bg-[#16201B] border-[#1C2921]' : 'bg-white border-gray-200'
+                  }`}>
                     {t.platform} Verified ({t.rating}★)
                   </span>
                   <div className="flex gap-1 text-[#3DDC84]">
@@ -283,72 +323,23 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <p className="text-lg text-white font-medium italic mb-6 leading-relaxed">
+                <p className={`text-lg font-medium italic mb-6 leading-relaxed ${isDark ? 'text-white' : 'text-gray-900'}`}>
                   "{t.quote}"
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-[#1C2921]">
-                <div className="font-bold text-white text-base">{t.author}</div>
+              <div className={`pt-6 border-t ${isDark ? 'border-[#1C2921]' : 'border-gray-200'}`}>
+                <div className={`font-bold text-base ${isDark ? 'text-white' : 'text-gray-900'}`}>{t.author}</div>
                 <div className="text-xs text-[#3DDC84] font-mono">{t.title} · {t.company}</div>
                 <div className="text-xs text-[#71717A] mt-1">{t.location} · {t.industry}</div>
-                <div className="mt-3 text-xs text-[#A1A1AA] bg-[#0A0F0C] p-3 rounded-lg border border-[#1C2921]">
-                  <strong className="text-white">Result:</strong> {t.result}
+                <div className={`mt-3 text-xs p-3 rounded-lg border ${
+                  isDark ? 'text-[#A1A1AA] bg-[#0A0F0C] border-[#1C2921]' : 'text-gray-700 bg-white border-gray-200'
+                }`}>
+                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Result:</strong> {t.result}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Platform Trust Bar */}
-        <div className="bg-[#101713] border border-[#1C2921] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col sm:flex-row items-center gap-6">
-            <div className="text-center sm:text-left">
-              <span className="block text-xs font-mono text-[#71717A] uppercase">CLUTCH PLATFORM</span>
-              <span className="text-xl font-bold text-white">{TRUST_BAR.clutch.overall} Rating</span>
-              <span className="block text-xs text-[#A1A1AA]">{TRUST_BAR.clutch.verifiedCount}</span>
-            </div>
-
-            <div className="h-10 w-[1px] bg-[#1C2921] hidden sm:block"></div>
-
-            <div className="text-center sm:text-left">
-              <span className="block text-xs font-mono text-[#71717A] uppercase">UPWORK PLATFORM</span>
-              <span className="text-xl font-bold text-white">{TRUST_BAR.upwork.rating} ({TRUST_BAR.upwork.reviewsCount})</span>
-              <span className="block text-xs text-[#3DDC84] font-mono">{TRUST_BAR.upwork.badge}</span>
-            </div>
-          </div>
-
-          <Link
-            href="/testimonials"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#16201B] border border-[#1C2921] text-white hover:border-[#3DDC84] hover:text-[#3DDC84] transition-all"
-          >
-            <span>View All Reviews</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-
-      {/* LATEST STORIES PREVIEW */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12">
-        <SectionHeader
-          eyebrow="STORIES"
-          number="— 06"
-          title="Insights from the engineering trenches"
-          description="Articles and deep dives on software architecture, agency growth, and AI automation."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-[#101713] border border-[#1C2921] rounded-2xl p-8 opacity-70">
-            <span className="text-xs font-mono text-[#3DDC84] mb-2 block">COMING SOON</span>
-            <h3 className="text-xl font-bold text-white mb-2">Architecting Autonomous AI Agents for US Logistics</h3>
-            <p className="text-sm text-[#A1A1AA]">A technical walkthrough on integrating Claude API and Make.com workflows for ground transportation.</p>
-          </div>
-
-          <div className="bg-[#101713] border border-[#1C2921] rounded-2xl p-8 opacity-70">
-            <span className="text-xs font-mono text-[#3DDC84] mb-2 block">COMING SOON</span>
-            <h3 className="text-xl font-bold text-white mb-2">Conversion-First UI/UX: Lessons from 11 Mobile App Launches</h3>
-            <p className="text-sm text-[#A1A1AA]">How we design onboarding loops in Flutter apps that drive retention from day one.</p>
-          </div>
         </div>
       </section>
 
