@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-primary: #0A0F0C;
+    --bg-card: #101713;
+    --bg-card-hover: #16201B;
+    --border-color: #1C2921;
+    --border-hover: #2E4537;
+    --accent-green: #3DDC84;
+    --accent-glow: rgba(61, 220, 132, 0.15);
+    --text-headline: #FFFFFF;
+    --text-body: #A1A1AA;
+    --text-muted: #71717A;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-body);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+    selection-background-color: var(--accent-green);
+    selection-color: #0A0F0C;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::selection {
+  background-color: #3DDC84;
+  color: #0A0F0C;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0F0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #1C2921;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3DDC84;
+}
+
+/* Glowing Radial Background Utility */
+.radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(61, 220, 132, 0.18) 0%, rgba(10, 15, 12, 0) 70%);
+}
+
+.radial-glow-hero {
+  background: radial-gradient(circle at 50% 20%, rgba(61, 220, 132, 0.12) 0%, rgba(10, 15, 12, 0) 65%);
+}
+
+.card-glow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-glow-hover:hover {
+  border-color: rgba(61, 220, 132, 0.4);
+  box-shadow: 0 0 25px rgba(61, 220, 132, 0.08);
 }
