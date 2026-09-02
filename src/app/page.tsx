@@ -6,7 +6,7 @@ import SectionHeader from '@/components/SectionHeader';
 import ScrollReveal from '@/components/ScrollReveal';
 import ProjectCard from '@/components/ProjectCard';
 import ClosingCta from '@/components/ClosingCta';
-import HeroIconT from '@/components/HeroIconT';
+import HeroPyramid from '@/components/HeroPyramid';
 import {
   HOME_HERO,
   FEATURED_PROJECTS,
@@ -27,40 +27,65 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
 
   return (
     <div className={`space-y-24 md:space-y-32 ${isDark ? 'figma-grid' : 'figma-grid-light'}`}>
-      {/* HERO SECTION — 100% MATCH TO FIGMA SCREENSHOT 1 WITH 3D 't' ICON */}
+      {/* HERO SECTION — 100% MATCH TO VIDEO RECORDING FRAMES 1 & 6 */}
       <section className="relative min-h-[85vh] flex flex-col justify-between pt-8 pb-12 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto">
           {/* Left Column: Giant Bold Headline */}
           <div className="lg:col-span-7">
             <ScrollReveal direction="up" delay={0.1}>
               <h1 className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight max-w-4xl leading-[1.02] font-sans mb-8 ${
-                isDark ? 'text-white' : 'text-gray-900'
+                isDark ? 'text-white' : 'text-[#000000]'
               }`}>
-                We design brands and build <span className="text-[#3DDC84]">digital</span> and <span className="text-[#3DDC84]">AI-driven</span> experiences.
+                We design brands and build digital and AI-driven experiences.
               </h1>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={0.2}>
               <p className={`text-lg md:text-xl max-w-2xl leading-relaxed mb-10 font-sans ${
-                isDark ? 'text-[#A1A1AA]' : 'text-gray-700'
+                isDark ? 'text-[#A1A1AA]' : 'text-[#475569]'
               }`}>
                 {HOME_HERO.subDescription}
               </p>
             </ScrollReveal>
           </div>
 
-          {/* Right Column: 3D Interactive 't' Icon (Rotating 3D Teglax Green Letter 't') */}
+          {/* Right Column: 3D Translucent Glass Triforce Pyramid (Exact match to video_frame_1 & video_frame_6) */}
           <div className="lg:col-span-5 flex items-center justify-center">
-            <HeroIconT isDark={isDark} />
+            <HeroPyramid isDark={isDark} />
           </div>
         </div>
 
-        {/* Bottom Hero Meta Bar matching Screenshot 1 */}
+        {/* Bottom Hero Meta Bar matching video_frame_1 */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 w-full pt-8 flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[#71717A]">
           <div>
             TEGLAX · EST. 2023 · PK ↔ US ↔ REMOTE
           </div>
           <div className="hidden md:block w-px h-6 bg-[#3DDC84] animate-pulse"></div>
+        </div>
+      </section>
+
+      {/* STUDIO INTRO BANNER — MATCHING VIDEO_FRAME_2 */}
+      <section className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8">
+            <h2 className={`text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05] font-sans ${
+              isDark ? 'text-white' : 'text-[#000000]'
+            }`}>
+              Teglax is a full-service digital agency operating in Pakistan & the USA.
+            </h2>
+          </div>
+
+          <div className="lg:col-span-4 space-y-4">
+            <p className={`text-sm leading-relaxed ${isDark ? 'text-[#A1A1AA]' : 'text-[#475569]'}`}>
+              We shape brand identities and build the websites, products and AI-driven experiences that carry them. The designers also write the code, so what ships is what was designed.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#3DDC84] hover:underline font-bold"
+            >
+              <span>START A PROJECT →</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -113,14 +138,14 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
                     {cap.number}
                   </span>
                   <h3 className={`text-xl md:text-2xl font-bold transition-colors ${
-                    isDark ? 'text-white group-hover:text-[#3DDC84]' : 'text-gray-900 group-hover:text-[#3DDC84]'
+                    isDark ? 'text-white group-hover:text-[#3DDC84]' : 'text-[#000000] group-hover:text-[#3DDC84]'
                   }`}>
                     {cap.title}
                   </h3>
                 </div>
 
                 <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto pl-12 md:pl-0">
-                  <p className={`text-sm max-w-md font-sans ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
+                  <p className={`text-sm max-w-md font-sans ${isDark ? 'text-[#A1A1AA]' : 'text-[#475569]'}`}>
                     {cap.desc}
                   </p>
                   <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all ${
@@ -137,10 +162,11 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
         </div>
       </section>
 
-      {/* STUDIO PANEL & STATS SECTION */}
+      {/* STUDIO PANEL & STATS SECTION — MATCHING VIDEO_FRAME_3 */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          <div className={`lg:col-span-7 border rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-between ${
+          {/* Studio Office Panel */}
+          <div className={`lg:col-span-6 border rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col justify-between ${
             isDark ? 'bg-[#0D1510] border-[#1A281E]' : 'bg-gray-50 border-gray-200'
           }`}>
             <div>
@@ -149,27 +175,28 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
               }`}>
                 <span>— STUDIO OPERATIONS</span>
               </div>
-              <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? 'text-white' : 'text-[#000000]'}`}>
                 Operating out of Okara, PK with US client coverage
               </h3>
-              <p className={`text-base leading-relaxed mb-8 ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
-                Teglax was founded in 2023 to bring elite technical execution and business development directly to ambitious founders across North America, Australia, and the Gulf.
+              <p className={`text-base leading-relaxed mb-8 ${isDark ? 'text-[#A1A1AA]' : 'text-[#475569]'}`}>
+                Projects run end to end inside the studio, from strategy and identity through to the code that ships them.
               </p>
             </div>
 
             <div className={`grid grid-cols-2 gap-4 pt-6 border-t ${isDark ? 'border-[#1A281E]' : 'border-gray-200'}`}>
               <div>
                 <span className="block text-xs font-mono text-[#71717A] uppercase">HEADQUARTERS</span>
-                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Okara, Pakistan</span>
+                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-[#000000]'}`}>Okara, Pakistan</span>
               </div>
               <div>
                 <span className="block text-xs font-mono text-[#71717A] uppercase">OPERATIONS</span>
-                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Remote-first US & Gulf</span>
+                <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-[#000000]'}`}>Remote-first US & Gulf</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+          {/* Stats Grid matching video_frame_3 (15+ Years, 3 Countries, 2M+ Users) */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             {STATS.map((stat, idx) => (
               <div
                 key={stat.label}
@@ -179,10 +206,10 @@ export default function HomePage({ theme = 'dark' }: { theme?: 'dark' | 'light' 
               >
                 <span className="font-mono text-xs text-[#3DDC84]">0{idx + 1}</span>
                 <div className="my-4">
-                  <span className={`text-3xl md:text-4xl font-extrabold tracking-tight block ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <span className={`text-3xl md:text-5xl font-extrabold tracking-tight block ${isDark ? 'text-white' : 'text-[#000000]'}`}>
                     {stat.value}
                   </span>
-                  <span className={`text-xs font-sans mt-1 block ${isDark ? 'text-[#A1A1AA]' : 'text-gray-600'}`}>
+                  <span className={`text-xs font-mono uppercase mt-2 block ${isDark ? 'text-[#71717A]' : 'text-[#64748B]'}`}>
                     {stat.label}
                   </span>
                 </div>
